@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Effeminate
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140123
+
+-->
+<html xmlns:th="www.thymeleafe.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+    <link th:href="@{/default.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/fonts.css}" rel="stylesheet" type="text/css" media="all" />
+
+    <!--[if IE 6]><link href="./default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <style>
+        .nL
+        {
+            display:block;
+        }
+        h4{
+            display:inline;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+        .button11
+        {
+            display: inline-block;
+            background: #dc86d4;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+        .button12
+        {
+            color:#FFF;
+        }
+        .block{
+            width:750px;
+            height:400px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a  href="/" >Student Platform</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="current_page_item"><a  href="/authenticateTheInstructor" id="" accesskey="1" title="">My Profile</a></li>
+                <li><a href="/instructorLessons" accesskey="2" title="">Lessons</a></li>
+                <li><a href="" accesskey="3" title="">Log out</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner">
+        <div class="container">
+            <div class="title">
+                <h2>Instructor Platform</h2>
+            </div>
+            <div  class="button11 block">
+                <p style="text-align: left"><b style="color:#000">Name: </b><a th:text="${instructor.name}" class="button11"></a></p>
+                <p style="text-align: left"><b style="color:#000;">Surname: </b> <a th:text="${instructor.lastName}" class="button12"></a></p>
+                <p style="text-align: left"><b style="color:#000;">Dept: </b><a th:text="${instructor.dept}" class="button11"></a></p>
+                <p style="text-align: left"><b style="color:#000;">Email: </b> <a style="text-transform: lowercase" th:text="${instructor.email}" class="button12"></a></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div id="copyright" class="container">
+    <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+</body>
+</html>

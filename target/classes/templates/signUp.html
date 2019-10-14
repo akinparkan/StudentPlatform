@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" htmlns:form="http://www.springframework.org/tags/form"
+      xmlns:htmlns="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+    <link th:href="@{/default.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/fonts.css}" rel="stylesheet" type="text/css" media="all" />
+    <style>
+        .nL
+        {
+            display:block;
+        }
+        h4{
+            display:inline;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+        .button1
+        {
+            display: inline-block;
+            background: #CA85DB;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            line-height: 4em;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 1em;
+            color: #FFF;
+        }
+        .button10
+        {
+            display: inline-block;
+            background: #42274c;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+        .line{
+            font-size: 1em;
+        }
+        .button11
+        {
+            display: inline-block;
+            background: #CA85DB;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="/">Student Platform</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li ><a href="/" accesskey="1" title="">Homepage</a></li>
+                <li><a href="/goToAboutUs" accesskey="2" title="">About</a></li>
+                <li><a href="#" accesskey="3" title="">Contact Us</a></li>
+                <li class="current_page_item"><a href="#" accesskey="4" title="">Sign up</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner">
+        <div class="container">
+            <div class="title">
+                <h2>Student Platform</h2>
+                <span class="byline">Start Using Student Platform
+				        </span>
+
+            </div>
+            <ul class="actions">
+
+                <li>
+                    <form action="/">
+                        <h2 class="button11 line">Sign Up  </h2><input type="submit" value="/ login" class="button11"/>
+                    </form>
+                    <form modelAttribute="student" action="check" class="button">
+                        <h4>Email:  </h4>
+                        <input type="text" name="email" class="byline" placeholder="Email">
+                        <a class="nL"></a>
+                        <h4>First Name: </h4>
+                        <input type="text" name="name" class="byline" placeholder="First Name">
+                        <a class="nL"></a>
+                        <h4>Last Name: </h4>
+                        <input type="text" name="lastName" class="byline" placeholder="Last Name">
+                        <a class="nL"></a>
+                        <h4>Password: </h4>
+                        <input type="password" name="password" class="byline" placeholder="Password">
+                        <a class="nL"></a>
+                        <h4>Department:  </h4>
+                        <input type="text" name="dept" class="byline" placeholder="Department">
+                        <a class="nL"></a>
+                        <input type="submit" value="Sign Up" class="button11"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

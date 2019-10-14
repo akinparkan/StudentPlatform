@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html xmlns:th="www.thymeleafe.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+    <link th:href="@{/default.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/fonts.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/JS/jQuerry.js}" rel="script" media="all"/>
+    <script language="JavaScript" type="text/javascript" src="jQuerry.js"> </script>
+    <!--[if IE 6]><link href="./default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <style>
+        .button1
+        {
+            display: inline-block;
+            padding: 0em 1em 0em 1em;
+            background: #CA85DB;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            line-height: 4em;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 1em;
+            color: #FFF;
+        }
+        .nL
+        {
+            display:block;
+        }
+        h4{
+            display:inline;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+        .button11
+        {
+            display: inline-block;
+            background: #d184db;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+
+        .block{
+            text-align:center;
+            width:750px;
+            height:400px;
+        }
+        th{
+            color: #5e6161;
+        }
+        .form-popup {
+            display:none;
+            background: #FFC31F;
+            position: fixed;
+            height:500px;
+            width: 500px;
+            bottom: 200px;
+            top:280px;
+            right: 450px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+        .show-popup {
+            display:block;
+            position: fixed;
+            bottom: 40px;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        .syllabusClass{
+            height: 350px;
+            width: 350px;
+            display:none;
+            z-index: 12;
+            position: fixed;
+            background: #2DAAE4;
+        }
+        .inpSyl{
+            height: 200px;
+            width: 150px;
+            background: #FFFFFF;
+        }
+        .nameL{}
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a  href="/" >Student Platform</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a  href="/authenticateTheInstructor" id="" accesskey="1" title="">My Profile</a></li>
+                <li class="current_page_item"><a href="#" accesskey="2" title="">Lessons</a></li>
+                <li><a href="" accesskey="4" title="">Log out</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner">
+        <div class="container">
+            <div class="title">
+                    <input id="addLessonButton" type="submit" value="add lesson" class="button11" onclick="addPopUp()"/>
+                <div class="form-popup" id="poper">
+                    <h1>Instructor Platform</h1>
+                        <form action="/saveLesson" style="text-align: left">
+                            <a>Lesson Name: </a><input type="text"  name="lessonsName"/>
+                            <a class="nL"></a>
+                            <a>Lesson Credit: </a><input type="number" step="0.01" name="lessonsCredit"/>
+                            <a class="nL"></a>
+                            <a>Day: </a>
+                            <select name="day">
+                                <option value="monday">monday</option>
+                                <option value="tuesday">tuesday</option>
+                                <option value="wednesday">wednesday</option>
+                                <option value="thursday">thursday</option>
+                                <option value="friday">friday</option>
+                            </select>
+                            <a class="nL"></a>
+                            <a>Starting Time : </a>
+                            <select name="startTime">
+                                <option value="8.40">8.40</option>
+                                <option value="9.40">9.40</option>
+                                <option value="10.40">10.40</option>
+                                <option value="11.40">11.40</option>
+                                <option value="13.40">13.40</option>
+                                <option value="14.40">14.40</option>
+                                <option value="15.40">15.40</option>
+                                <option value="16.40">16.40</option>
+                            </select>
+                            <a class="nL"></a>
+                            <a>Ending Time: </a>
+                            <select name="endingTime">
+                                <option value="9.30">9.30</option>
+                                <option value="10.30">10.30</option>
+                                <option value="11.30">11.30</option>
+                                <option value="12.30">12.30</option>
+                                <option value="13.30">13.30</option>
+                                <option value="14.30">14.30</option>
+                                <option value="15.30">15.30</option>
+                                <option value="16.30">16.30</option>
+                                <option value="17.30">17.30</option>
+                            </select>
+                            <a class="nL"></a>
+                            <a>Syllabus: </a> <input type="text" class="inpSyl" name="addSyll"/>
+                            <a class="nL"></a>
+                            <input type="submit" value="Add Lesson" name="addLessonButton"/>
+                            <input id="closePopUp" class="button11" type="button" value="close" style="text-align: end" onclick="removePopUp()"/>
+                        </form>
+                </div>
+            </div>
+            <div  class="button11 block nameL" >
+                <table class= "block" style="border-style: solid">
+                    <thead style="border-style: solid">
+                        <tr>
+                            <th style="border-style: solid">Lesson name</th>
+                            <th style="border-style: solid">Instructor</th>
+                            <th style="border-style: solid">Time(start - end)</th>
+                            <th style="border-style: solid">Credit</th>
+                            <th style="border-style: solid">Syllabus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="tempLesson : ${lessonsToShow}">
+                            <td th:text="${tempLesson.lessonName}"/>
+                            <td th:text="${tempLesson.instructor.name}"/>
+                            <td th:text="${tempLesson.startingTime} + ${tempLesson.endingTime}"/>
+                            <td th:text="${tempLesson.lessonGpa}"/>
+                            <td><a href="" >info</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div id="copyright" class="container">
+    <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+
+</body>
+<script type="text/javascript">
+    function addPopUp() {
+        document.getElementById("poper").style.display="block";
+    };
+
+    function removePopUp() {
+        document.getElementById("poper").style.display="none";
+    };
+    function addSylPopUp() {
+        document.getElementById("sylPoper").style.display="block";
+    };
+
+    function removeSylPopUp() {
+        document.getElementById("sylPoper").style.display="none";
+    };
+    $(document).ready(function () {
+            $('#nameL tbody tr:even').css('background-color','#fff');
+        });
+</script>
+</script>
+</html>

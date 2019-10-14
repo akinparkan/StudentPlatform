@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" htmlns:form="http://www.springframework.org/tags/form"
+      xmlns:htmlns="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+    <link th:href="@{/default.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/fonts.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/JS/jQuerry.js}" rel="script" media="all"/>
+    <script language="JavaScript" type="text/javascript" src="jQuerry.js"> </script>
+    <style>
+        .nL
+        {
+            display:block;
+        }
+        h4{
+            display:inline;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+        .button11
+        {
+            display: inline-block;
+            background: #CA85DB;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+        .holdClass{}
+        .aClass{
+            color: #FFF;
+        }
+        .credit{}
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="/">Student Platform</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a  href="/authenticateTheUser" id="" accesskey="1" title="">My Profile</a></li>
+                <li><a href="/Lessons" accesskey="2" title="">Lessons</a></li>
+                <li class="current_page_item"><a href="/gpaCalc" accesskey="3" title="">GPA Calculator</a></li>
+                <li><a href="" accesskey="4" title="">Log out</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner">
+        <div class="container">
+            <div class="title">
+                <h2>Student Platform</h2>
+                <span class="byline">GPA Calculator</span>
+
+            </div>
+            <ul class="actions">
+
+                <li>
+                    <form modelAttribute="user" class="button">
+                        <i>1.</i><input type="text" name="nameOfLesson1" class="byline" placeholder="Name of The Lesson">
+                        <input type="number" name="creditOfLesson1" class="byline credit" placeholder="credit">
+                        <input type="number" name="gpaOfLesson1" class="byline" placeholder="gpa" step="0.01">
+                        <a class="nL"></a>
+                        <i>2.</i><input type="text" name="nameOfLesson2" class="byline" placeholder="Name of The Lesson">
+                        <input type="number" name="creditOfLesson2" class="byline credit" placeholder="credit">
+                        <input type="number" name="gpaOfLesson2" class="byline" placeholder="gpa" step="0.01">
+                        <a class="nL"></a>
+                        <i>3.</i><input type="text" name="nameOfLesson3" class="byline" placeholder="Name of The Lesson">
+                        <input type="number" name="creditOfLesson3" class="byline credit" placeholder="credit">
+                        <input type="number" name="gpaOfLesson3" class="byline" placeholder="gpa" step="0.01">
+                        <a class="nL"></a>
+                        <i>4.</i><input type="text" name="nameOfLesson4" class="byline" placeholder="Name of The Lesson">
+                        <input type="number" name="creditOfLesson4" class="byline credit" placeholder="credit">
+                        <input type="number" name="gpaOfLesson4" class="byline" placeholder="gpa" step="0.01">
+                        <a class="nL"></a>
+                        <i>5.</i><input type="text" name="nameOfLesson5" class="byline" placeholder="Name of The Lesson">
+                        <input type="number" name="creditOfLesson5" class="byline credit" placeholder="credit">
+                        <input type="number" name="gpaOfLesson5" class="byline" placeholder="gpa" step="0.01">
+                        <a class="nL holdClass"></a>
+                        <img src="./static/arrow.png" height="42" width="42"/>
+                        <input id="addLessonButton" type="button" value="add lesson"/>
+                        <a class="nL"></a>
+                        <input type="submit" value="calculate" class="button11" id="calculateGPA"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var numberOfIndex = 5;
+            $('#addLessonButton').click(function() {
+             numberOfIndex++;
+             var holderName = "nameOfLesson" + numberOfIndex;
+             var creditName = "creditOfLesson" + numberOfIndex;
+             var gpa = "gpaOfLesson"+ numberOfIndex;
+             var shower ="<i class='aClass'>"+ numberOfIndex + "." + "</i>";
+            var holdHtml =  '<input id="holderName" type="text" name=holderName class="byline" placeholder="Name of The Lesson">' +
+                            '<input id="creditName" type="number" name=creditName class="byline" placeholder="credit">' +
+                            '<input id="gpa" type="number" name=gpa class="byline" placeholder="gpa" step="0.01" >'+
+                            '<a class="nL"></a>';
+            var place = $(document.body).find(".holdClass");
+            var res = shower + holdHtml;
+        $(res).appendTo(place);
+        });
+
+            $('#calculateGPA').click(function () {
+
+                var les1 = $('.credit').val();
+                console.log(parseInt(les1));
+                var les2 = document.getElementsByName("gpaOfLesson2");
+                var les3 = document.getElementsByName("gpaOfLesson3");
+                var les4 = document.getElementsByName("gpaOfLesson4");
+                var les5 = document.getElementsByName("gpaOfLesson5");
+
+
+                var cre1 = document.getElementsByName("creditOfLesson1");
+                var cre2 = document.getElementsByName("creditOfLesson2");
+                var cre3 = document.getElementsByName("creditOfLesson3");
+                var cre4 = document.getElementsByName("creditOfLesson4");
+                var cre5 = document.getElementsByName("creditOfLesson5");
+                var res = (les1.value() * cre1.value()) + (les2.value() * cre2.value()) + (les3.value() * cre3.value()) +
+                    (les4.value() *cre4.value()) + (les5.value() * cre5.value());
+
+                var cre = cre1.value() + cre2.value() + cre3.value() + cre4.value() + cre5.value();
+                var num = 5;
+                while(num != numberOfIndex)
+                {
+                    num++;
+                    res = res + (document.getElementsByName("gpaOfLesson" + num).value()) * document.getElementsByName("creditOfLesson" + num).value() ;
+                    cre = cre + document.getElementsByName("creditOfLesson" + num).value();
+                }
+                var result = res / cre;
+                alert(res);
+                var ht = '<a>'+ result +'</a>'
+                $(ht).appendTo('#calculateGPA');
+                });
+
+        });
+    </script>
+
+</body>
+</html>
