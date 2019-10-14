@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="www.thymeleafe.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+    <link th:href="@{/default.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/fonts.css}" rel="stylesheet" type="text/css" media="all" />
+
+    <!--[if IE 6]><link href="./default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <style>
+        .button1
+        {
+            display: inline-block;
+            padding: 0em 1em 0em 1em;
+            background: #CA85DB;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            line-height: 4em;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 1em;
+            color: #FFF;
+        }
+        .nL
+        {
+            display:block;
+        }
+        h4{
+            display:inline;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+        .button11
+        {
+            display: inline-block;
+            background: #d184db;
+            border-radius: 5px;
+            letter-spacing: 0.20em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #FFF;
+
+        }
+        .nameL{}
+
+        .block{
+            text-align:center;
+            width:750px;
+            height:400px;
+        }
+        th{
+            color: #5e6161;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a  href="/" >Student Platform</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a  href="/authenticateTheUser" id="" accesskey="1" title="">My Profile</a></li>
+                <li class="current_page_item"><a href="#" accesskey="2" title="">Lessons</a></li>
+                <li><a href="/gpaCalc" accesskey="3" title="">GPA Calculator</a></li>
+                <li><a href="" accesskey="4" title="">Log out</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner">
+        <div class="container">
+            <div class="title">
+                <h2>Student Platform</h2>
+            </div>
+            <div  class="button11 block nameL">
+                <table class= "block" style="border-style: solid">
+                    <thead style="border-style: solid">
+                        <tr>
+                            <th style="border-style: solid">Lesson name</th>
+                            <th style="border-style: solid">Instructor</th>
+                            <th style="border-style: solid">Time</th>
+                            <th style="border-style: solid">Credit</th>
+                            <th style="border-style: solid">take</th>
+                            <th style="border-style: solid">Syllabus</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr th:each="tempLesson : ${lessonsToShow}">
+                                <form action="/takeLesson" >
+                                    <td th:text="${tempLesson.lessonName}"/>
+                                    <td th:text="${tempLesson.instructor.name}"/>
+                                    <td th:text="${tempLesson.startingTime} + ${tempLesson.endingTime}"/>
+                                    <td th:text="${tempLesson.lessonGpa}"/><input type="hidden" th:value="${tempLesson.lessonName}" name="lessonName"/>
+                                    <td><input value="take" type="submit" /></td>
+                                </form>
+                                    <td><form action="/goToSyllabus"><input type="hidden" th:value="${tempLesson.lessonName}" name="lessonName"/><input value="info" type="submit"/> </form></td>
+                            </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+    <div id="copyright" class="container">
+         <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nameL tbody tr:even').css('background-color','#fff');
+    });
+    $("#").onclick(function () {
+        
+    })
+</script>
+</html>
